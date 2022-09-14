@@ -1,20 +1,28 @@
 import { useState, useEffect } from "react";
+import { getCurrentWeather } from "../api/weatherApi";
 
-// const useFetch = (inputValue: string) => {
-//   const [searchCity, setSearchCity] = useState(null);
-//   const [loading, setLoading] = useState(true);
+const useFetch = (lat: number, log: number, searchCityData: any ) => {
+  const [currentWeather, setCurrentWeather] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//     async function fetchCity() {
-//       const fetchedData = await getCities(inputValue);
-//       setSearchCity(fetchedData);
-//       setLoading(false);
-//     }
+  useEffect(() => {
+    async function getWeather() {
+    if(searchCityData) {
+      const fetchedData = await getCurrentWeather(lat, log);
 
-//     fetchCity();
-//   }, [inputValue]);
+     return setCurrentWeather({city: "Dar es Salaam",  ...fetchedData});
+    }
+    else {
+        const fetchedData = await getCurrentWeather(lat, log);
+        return setCurrentWeather({city: "Dar es Salaam",  ...fetchedData});
+    }
+    }
 
-//   return { searchCity, loading };
-// };
+    getWeather()
+    setLoading(false);
+  }, [lat, log]);
 
-// export default useFetch;
+  return { currentWeather, loading };
+};
+
+export default useFetch;
