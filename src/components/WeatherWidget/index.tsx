@@ -1,51 +1,49 @@
+import useFetch from "../../hooks"
 import "./styles.css"
 
-interface WeatherWidgetProps {
-    currentWeather: any,
-    loading: boolean
-} 
+const WeatherWidget = ({ selectedCity }: any) => {
 
-const WeatherWidget = ({currentWeather, loading}: WeatherWidgetProps) => {
+    const { currentWeather, loading } = useFetch(selectedCity)
 
     return (
         <div className="weather" >
             <h3> Current weather</h3>
             <section className="current-weather">
-                <div className="top">
-                    <div>
-                        <p className="city">{currentWeather?.city}</p>
-                        <p className="weather-description">{currentWeather?.weather[0].description}</p>
-                    </div>
+                <div className="header">
+                    <h4>{currentWeather?.city} {currentWeather?.sys?.country}</h4>
+                </div>
+                <div className="weather-content">
+                    <p className="temperature">{Math.round(currentWeather?.main.temp)}°C</p>
                     <img
                         alt="weather"
                         className="weather-icon"
-                        src={`icons/${currentWeather?.weather[0].icon}.png`}
+                        src={`http://openweathermap.org/img/w/${currentWeather?.weather[0].icon}.png`}
                     />
+                    <p className="weather-description">{currentWeather?.weather[0].description}</p>
+
                 </div>
-                <div className="bottom">
-                    <p className="temperature">{Math.round(currentWeather?.main.temp)}°C</p>
-                    <div className="details">
-                        <div className="parameter-row">
-                            <span className="parameter-label">Details</span>
-                        </div>
-                        <div className="parameter-row">
-                            <span className="parameter-label">Feels like</span>
-                            <span className="parameter-value">
-                                {Math.round(currentWeather?.main?.feels_like)}°C
-                            </span>
-                        </div>
-                        <div className="parameter-row">
-                            <span className="parameter-label">Wind</span>
-                            <span className="parameter-value">{currentWeather?.wind?.speed} m/s</span>
-                        </div>
-                        <div className="parameter-row">
-                            <span className="parameter-label">Humidity</span>
-                            <span className="parameter-value">{currentWeather?.main?.humidity}%</span>
-                        </div>
-                        <div className="parameter-row">
-                            <span className="parameter-label">Pressure</span>
-                            <span className="parameter-value">{currentWeather?.main?.pressure} hPa</span>
-                        </div>
+
+                <div className="bottom-detail">
+                    <div className="detail-column">
+                        <span className="detail-label">Wind</span>
+                        <p >{currentWeather?.wind?.speed} m/s</p>
+                    </div>
+                    <div className="detail-column">
+                        <span className="detail-label">Humidity</span>
+                        <p >{currentWeather?.main?.humidity}%</p>
+                    </div>
+                    <div className="detail-column">
+                        <span className="detail-label">Pressure</span>
+                        <p >{currentWeather?.main?.pressure} hPa</p>
+                    </div>
+                    <div className="detail-column">
+                        <span className="detail-label">Weather</span>
+                        <p >{currentWeather?.weather[0].main}</p>
+                    </div>
+                    <div className="detail-column">
+                        <span className="detail-label">Feels like</span>
+                        <p > {Math.round(currentWeather?.main?.feels_like)}°C
+                        </p>
                     </div>
                 </div>
             </section>
