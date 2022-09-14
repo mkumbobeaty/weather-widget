@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export const GEO_API_URL = process.env.REACT_APP_GEODB_API_URL || "https://wft-geo-db.p.rapidapi.com";
+const GEO_API_URL = process.env.REACT_APP_GEODB_API_URL || "https://wft-geo-db.p.rapidapi.com";
 const GEO_KEY = process.env.REACT_APP_GEODB_KEY || "VogUBSNiWjmshfr8T3IRyUA7JjWkp1x1dy4jsnvOOl2jJiDxEk"
 
 Axios.defaults.baseURL = `${GEO_API_URL}/v1/geo`;
@@ -15,4 +15,10 @@ export const axios = Axios.create({
       }
 });
 
+export const getCities = (inputValue: string) => {
+  return axios.get(`/cities`, { params: {
+      limit: 10,
+      namePrefix: inputValue
+  } }).then((response) => response.data);
+}
   
