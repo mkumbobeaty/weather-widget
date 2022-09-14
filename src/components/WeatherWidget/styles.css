@@ -18,6 +18,12 @@
   background-color: #333;
   margin: 20px auto;
 }
+.current-weather h5 {
+
+  padding-block: 2rem;
+  font-size: 18px;
+  font-weight: 400;
+}
 
 .weather-content,
 .bottom-detail {

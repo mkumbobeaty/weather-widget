@@ -9,7 +9,7 @@ export const getCurrentWeather = (lat: number, lon:number) => {
       lon: lon,
       appid: WEATHER_KEY,
       units: "metric"
-  } }).then((response) => response.data);
+  } }).then((response) => response.data).catch(error => error);
 }
   
 

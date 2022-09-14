@@ -6,7 +6,6 @@ import WeatherWidget from './components/WeatherWidget';
 
 import './App.css';
 
-
 function App() {
 
   const [selectedCityData, setSelectedCityData] = useState(null)
@@ -17,8 +16,8 @@ function App() {
 
   return (
     <div className="container">
-      <SearchCity onSearchChange={onSearchChange} />
       <WeatherWidget selectedCity={selectedCityData} />
+      <SearchCity onSearchChange={onSearchChange} />
 
     </div>
   );
