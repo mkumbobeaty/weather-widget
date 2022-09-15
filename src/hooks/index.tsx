@@ -27,7 +27,14 @@ const useFetch = (selectedCity: any) => {
         }
         setLoading(true)
         getWeather()
+
+        const interval: NodeJS.Timer = setInterval(() => {
+            getWeather()
+        }, 30000)
+
+        return () => clearInterval(interval)
     }, [selectedCity]);
+
 
     return { currentWeather, loading, errorMessage };
 };
