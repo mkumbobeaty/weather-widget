@@ -6,7 +6,6 @@ const WeatherWidget = ({ selectedCity }: any) => {
 
     const { currentWeather, loading, errorMessage } = useFetch(selectedCity)
 
-    console.log(loading)
     return (
         <div className="weather" >
             <h3> Current weather</h3>

@@ -10,31 +10,32 @@ interface SearchProps {
     onSearchChange: (data: any) => void,
 } 
 
-const loadingOptions = async (inputValue: string) => {
-    const fetchedData = await getCities(inputValue);
-    const options = fetchedData?.data.map((city: any) => {
-      return {
-        value: `${city.latitude} ${city.longitude}`,
-        label: city.name
-      }
-    })
-
-    return options
-  }
-
 const SearchCity = ({ onSearchChange}: SearchProps) => {
     const [selectedOption, setSelectedOption] = useState<string | null>(null)
+    const [defaultOptions, setDefaultOptions] = useState<string[]>([])
+      
+      const loadingOptions = async (inputValue: string) => {
+        const fetchedData = await getCities(inputValue);
+        const options = fetchedData?.data.map((city: any) => {
+          return {
+            value: `${city.latitude} ${city.longitude}`,
+            label: city.name
+          }
+        })
+        setDefaultOptions(options)
+        return options
+      }
 
-      const onChangeSelectedOption = (selectedOption: any) => {
+        const onChangeSelectedOption = (selectedOption: any) => {
         setSelectedOption(selectedOption);
         onSearchChange(selectedOption);
 
       };
-      
+
     return (
         <div className="search-container">
             <AsyncSelect
-                defaultOptions
+                defaultOptions={defaultOptions}
                 placeholder="Search for city"
                 loadOptions={loadingOptions}
                 isClearable={true}

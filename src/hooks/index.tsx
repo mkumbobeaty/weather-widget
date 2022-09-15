@@ -12,20 +12,20 @@ const useFetch = (selectedCity: any) => {
             if (selectedCity !== null) {
                 const [lat, lon] = selectedCity.value.split(" ");
                 const fetchedData = await getCurrentWeather(lat, lon);
-                return setCurrentWeather({ city: selectedCity?.label, ...fetchedData });
+                setLoading(false)
+                if (fetchedData?.response) setErrorMessage(fetchedData?.response?.data?.message)
+                else {
+                    return setCurrentWeather({ city: selectedCity?.label, ...fetchedData });
+                }
             }
             else {
                 const fetchedData = await getCurrentWeather(-6.776012, 39.178326);
                 setLoading(false);
-
-                if (fetchedData?.response) setErrorMessage(fetchedData?.response?.data?.message)
-                else {
-                    return setCurrentWeather({ city: "Dar es Salaam", ...fetchedData });
-                }
+                return setCurrentWeather({ city: "Dar es Salaam", ...fetchedData });
 
             }
         }
-
+        setLoading(true)
         getWeather()
     }, [selectedCity]);
 
