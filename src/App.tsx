@@ -18,7 +18,6 @@ function App() {
     <div className="container">
       <WeatherWidget selectedCity={selectedCityData} />
       <SearchCity onSearchChange={onSearchChange} />
-
     </div>
   );
 }

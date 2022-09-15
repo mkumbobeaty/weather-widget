@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getCurrentWeather } from "../api/weatherApi";
+import { WeatherResponse } from "../components/types";
 
 const useFetch = (selectedCity: any) => {
-    const [currentWeather, setCurrentWeather] = useState<any>(null);
+    const [currentWeather, setCurrentWeather] = useState<WeatherResponse | any>(null);
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
 
