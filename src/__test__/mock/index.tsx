@@ -1,7 +1,3 @@
-export const selectedCity = {
-    m: "testing"
-}
-
 export const currentWeather = { 
     city:"Dar es Salaam",
     coord: { "lon": 39.1783, "lat": -6.776 }, 

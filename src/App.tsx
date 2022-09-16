@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import SearchCity from './components/SearchInput';
 import WeatherWidget from './components/WeatherWidget';
+import ThemeMode from './components/Theme';
 
 import './App.css';
 
@@ -16,6 +17,8 @@ function App() {
 
   return (
     <div className="container">
+      <h2>Weather Widget Component</h2>
+      <ThemeMode />
       <WeatherWidget selectedCity={selectedCityData} />
       <SearchCity onSearchChange={onSearchChange} />
     </div>
