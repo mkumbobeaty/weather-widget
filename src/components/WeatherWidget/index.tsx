@@ -11,7 +11,7 @@ const WeatherWidget = ({ selectedCity }: any) => {
     return (
         <div className="weather">
             <h3> Current weather </h3>
-            <section className="current-weather">
+            <section className="current-weather" data-testid="current-weather">
                 {loading ? <Spinner /> :
                     errorMessage ? <h5>{errorMessage}</h5> : 
                     <Weather currentWeather={currentWeather} />
