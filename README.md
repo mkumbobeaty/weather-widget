@@ -37,7 +37,7 @@ $ npm run test
 ## React Weather App is available as a node package.
 
 ```bash
-$ npm install weather-widget-react-appl
+$ npm install react-weather-widget-app
 ```
 
 ## Project built with
