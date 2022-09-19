@@ -1,7 +1,6 @@
 import { WeatherResponse } from "../types"
 import "./styles.css"
 
-
 interface WeatherProps {
     currentWeather: WeatherResponse
 }

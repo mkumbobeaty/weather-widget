@@ -5,7 +5,6 @@ import { getCities } from '../../api/geodbApi';
 
 import "./styles.css"
 
-
 interface SearchProps {
   onSearchChange: (data: any) => void,
 }

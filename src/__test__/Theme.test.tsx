@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import ThemeMode from '../components/Theme';
 
 const setup = () => render(<ThemeMode />);
@@ -17,7 +17,6 @@ describe("Theme mode", () => {
 
     it('renders with light mode default', () => {
         setup()
-
         const toggle_theme = screen.getByTestId('toggle-theme-input')
         expect(toggle_theme).toBeInTheDocument()
         const mockTheme = "light";
@@ -28,14 +27,10 @@ describe("Theme mode", () => {
     it("should toggles to dark mode", () => {
         setup()
         const inputElement = screen.getByRole("checkbox") as HTMLInputElement;
-
         expect(inputElement.checked).toEqual(false);
         fireEvent.click(inputElement);
         expect(inputElement.checked).toEqual(true);
-
         expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
     });
-
-
 
 })

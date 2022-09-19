@@ -14,6 +14,7 @@
   background-color: var(--background-color);
   color: var(--font-color);
 }
+
 .toggle-theme-wrapper {
   font-family: sans-serif;
   text-align: center;
@@ -21,6 +22,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .toggle-theme {
   position: relative;
   display: inline-block;

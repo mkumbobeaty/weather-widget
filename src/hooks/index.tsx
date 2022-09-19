@@ -7,7 +7,6 @@ const useFetch = (selectedCity: any) => {
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
 
-
     useEffect(() => {
         async function getWeather() {
             if (selectedCity !== null) {
@@ -29,13 +28,13 @@ const useFetch = (selectedCity: any) => {
         setLoading(true)
         getWeather()
 
+        //refresh data in the background
         const interval: NodeJS.Timer = setInterval(() => {
             getWeather()
         }, 30000)
 
         return () => clearInterval(interval)
     }, [selectedCity]);
-
 
     return { currentWeather, loading, errorMessage };
 };
