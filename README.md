@@ -1,4 +1,4 @@
-# React Weather App🌤🌤
+# React Weather App🌤
 
 This is weather widget application created with React and OpenWeatherMap API.
 
@@ -46,4 +46,4 @@ $ npm install react-weather-widget-app
 - React Hooks
 - Display API Data Using Axios with React
 - [API](https://openweathermap.org/api)
-- [GEODB_API](ttps://wft-geo-db.p.rapidapi.com)
+- [GEODB_API](https://wft-geo-db.p.rapidapi.com)
